@@ -1,7 +1,7 @@
 defmodule TodayWeb.Plugs.Locale do
   import Plug.Conn
 
-  @locales ["en", "fr", "de"]
+  @locales ["en", "fr", "br"]
 
   def init(default), do: default
 
