@@ -8,6 +8,7 @@ defmodule TodayWeb.Router do
     plug :put_root_layout, {TodayWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug TodayWeb.Plugs.Locale, "en"
   end
 
   pipeline :api do
