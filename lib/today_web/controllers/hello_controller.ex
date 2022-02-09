@@ -1,6 +1,8 @@
 defmodule TodayWeb.HelloController do
   use TodayWeb, :controller
 
+  action_fallback TodayWeb.FallbackController
+
   @spec index(Plug.Conn.t(), any) :: Plug.Conn.t()
   def index(conn, _params) do
     render(conn, "index.html")
