@@ -15,10 +15,27 @@ defmodule TodayWeb.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/admin", TodayWeb.Admin, as: :admin do
+    pipe_through :browser
+
+    resources "/images", ImageController
+    resources "/reviews", ReviewController
+    resources "/users", UserController
+  end
+
   scope "/", TodayWeb do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    # nested resources
+    resources "/users", UserController do
+      resources "/posts", PostController, only: [:index, :show]
+    end
+
+    resources "/comments", CommentController, except: [:delete]
+    resources "/reviews", ReviewController
+
     get "/hello", HelloController, :index
     get "/hello/:messenger", HelloController, :show
   end
