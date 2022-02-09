@@ -2,7 +2,7 @@ defmodule TodayWeb.Router do
   use TodayWeb, :router
 
   pipeline :browser do
-    plug :accepts, ["html"]
+    plug :accepts, ["html", "text"]
     plug :fetch_session
     plug :fetch_live_flash
     plug :put_root_layout, {TodayWeb.LayoutView, :root}
@@ -27,6 +27,7 @@ defmodule TodayWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/redirect_test", PageController, :redirect_test
 
     # nested resources
     resources "/users", UserController do
