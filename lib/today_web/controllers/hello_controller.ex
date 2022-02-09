@@ -8,6 +8,9 @@ defmodule TodayWeb.HelloController do
 
   @spec show(Plug.Conn.t(), map) :: Plug.Conn.t()
   def show(conn, %{"messenger" => messenger}) do
-    render(conn, "show.html", messenger: messenger)
+    conn
+    |> assign(:messenger, messenger)
+    |> assign(:receiver, "Julia")
+    |> render("show.html")
   end
 end
