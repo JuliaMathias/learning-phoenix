@@ -1,4 +1,4 @@
-# Today
+# Learning Phoenix
 
 To start your Phoenix server:
 
